@@ -7,7 +7,7 @@ export default function Sidebar() {
     <div className="flex flex-col justify-between h-full">
       <div className="mt-10">
         <div className="flex justify-center">
-          <Logo />
+          <a href="/"><Logo /></a>
         </div>
         <HeaderRoutes className="flex flex-col items-center gap-14 mt-10" />
       </div>

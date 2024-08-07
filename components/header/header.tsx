@@ -13,7 +13,7 @@ export function Header() {
       <header className="flex items-center justify-between p-4 px-8 bg-[#000000]">
         <div className="flex items-center">
           <MobileNavbar />
-          <Logo />
+          <a href="/"><Logo /></a>
         </div>
         <HeaderRoutes className="lg:flex items-center gap-14 hidden text-white" />
         <ShimmerButton>Get Started</ShimmerButton>

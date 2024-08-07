@@ -17,6 +17,10 @@ const routes = [
         label: "FAQ",
         href: "/faq",
     },
+    {
+        label: "Gallery",
+        href: "/gallery",
+    },
 ]
 
 export const HeaderRoutes = ({className}: {className?: string}) => {
