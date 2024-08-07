@@ -10,7 +10,7 @@ export function Header() {
 
   return (
     <>
-      <header className="flex items-center justify-between p-4 bg-[#000000]">
+      <header className="flex items-center justify-between p-4 px-8 bg-[#000000]">
         <div className="flex items-center">
           <MobileNavbar />
           <Logo />
