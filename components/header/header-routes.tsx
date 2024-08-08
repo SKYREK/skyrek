@@ -18,6 +18,10 @@ const routes = [
         href: "/faq",
     },
     {
+        label: "Blog",
+        href: "/blog",
+    },
+    {
         label: "Gallery",
         href: "/gallery",
     },
