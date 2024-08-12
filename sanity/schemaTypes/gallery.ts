@@ -4,6 +4,11 @@ export default {
   title: 'Gallery',
   fields: [
     {
+      name: 'ImageTitle',
+      type: 'string',
+      title: 'Title of the Image',
+    },
+    {
       name: 'galleryImage',
       type: 'image',
       title: 'Add Gallery Image',

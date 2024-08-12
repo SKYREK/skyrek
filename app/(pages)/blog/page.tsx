@@ -21,7 +21,6 @@ async function getData() {
 }
 export default async function Blog() {
   const data: simpleBlogCard[] = await getData();
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-20 px-16 md:px-28 lg:px-72 gap-5">
         {data.map((post, idx) => (
