@@ -5,14 +5,14 @@ const routes = [
         label: "Home",
         href: "/",
     },
-    {
-        label: "Features",
-        href: "/features",
-    },
-    {
-        label: "Pricing",
-        href: "/pricing",
-    },
+    // {
+    //     label: "Features",
+    //     href: "/features",
+    // },
+    // {
+    //     label: "Pricing",
+    //     href: "/pricing",
+    // },
     {
         label: "FAQ",
         href: "/faq",
@@ -24,6 +24,10 @@ const routes = [
     {
         label: "Gallery",
         href: "/gallery",
+    },
+    {
+        label: "Contact",
+        href: "/contact",
     },
 ]
 

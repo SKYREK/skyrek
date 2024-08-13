@@ -28,7 +28,7 @@ async function getImages() {
 export default async function Gallery() {
   const images = await getImages();
   return (
-    <section className="py-20 px-16 md:px-28 lg:px-72">
+    <section className="lg:mt-5">
       <div className="columns-2 gap-4 sm:columns-3">
         {images.map(({ imageUrl, width, height }: any, idx: any) => (
           <BlurFade key={imageUrl} delay={0.25 + idx * 0.05} inView>
