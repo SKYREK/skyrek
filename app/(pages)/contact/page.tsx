@@ -1,4 +1,5 @@
 "use client";
+import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { Dot, MoveUpRight } from "lucide-react";
 import { MoveDownRight } from "lucide-react";
@@ -42,6 +43,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { client } from "@/lib/sanity";
+import toast from "react-hot-toast";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -51,7 +53,10 @@ const formSchema = z.object({
     .string()
     .min(1, { message: "Please enter your email address." })
     .email({ message: "Please enter a valid email address." }),
-  phone: z.string().min(10, { message: "Please enter your phone number." }).optional(),
+  phone: z
+    .string()
+    .min(10, { message: "Please enter your phone number." })
+    .optional(),
   source: z.string({
     required_error: "Please select where you found us.",
   }),
@@ -72,19 +77,32 @@ export default function Contact() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
-    client.create({
-      _type: 'contactForm',
-      name: values.name,
-      email: values.email,
-      phone: values.phone,
-      source: values.source,
-      message: values.message,
-    }).then((res) => {
-      console.log('Form submitted:', res);
-    }).catch((err) => {
-      console.error('Form submission error:', err);
-    });
+    client
+      .create({
+        _type: "contactForm",
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        source: values.source,
+        message: values.message,
+      })
+      .then(() => {
+        axios
+          .post("/api/contact", values, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then(() => {
+            toast.success("Successfully Submitted");
+          })
+          .catch(() => {
+            // toast.error("Form submitted, but email failed to send.");
+          });
+      })
+      .catch((err) => {
+        toast.error("Something went wrong!");
+      });
   }
 
   return (
@@ -134,7 +152,9 @@ export default function Contact() {
             </div>
           </div>
           <div className="flex gap-3">
-            <p className="text-gray-900 dark:text-gray-400">Hate contact forms?</p>
+            <p className="text-gray-900 dark:text-gray-400">
+              Hate contact forms?
+            </p>
             <p>hello@skyrek.lk</p>
           </div>
         </div>
@@ -174,7 +194,11 @@ export default function Contact() {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input placeholder="Phone (optional)" {...field} type="number"/>
+                      <Input
+                        placeholder="Phone (optional)"
+                        {...field}
+                        type="number"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
