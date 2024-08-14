@@ -22,10 +22,10 @@ async function getData() {
 export default async function Blog() {
   const data: simpleBlogCard[] = await getData();
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-auto">
         {data.map((post, idx) => (
             <Card key={idx}>
-                <Image src={urlFor(post.featuredImage).url()} alt={post.title} width={500} height={500} className="rounded-t-lg h-[200px] object-cover"/>
+                <Image src={urlFor(post.featuredImage).url()} alt={post.title} width={500} height={500} className="rounded-t-lg h-[200px] object-cover w-full"/>
 
                 <CardContent className="mt-5">
                     <h3 className="text-lg line-clamp-2">{post.title}</h3>

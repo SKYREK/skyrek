@@ -5,6 +5,16 @@ export interface simpleBlogCard{
     featuredImage: any;
 }
 
+export interface simpleProjectCard{
+    projectName: string;
+    smallDescription: string;
+    startData: string;
+    endData: string;
+    technologies:Array<string>;
+    demoLink: string;
+    featuredImage: any;
+}
+
 export interface fullBlog{
     CurrentSlug: string,
     title: string,
