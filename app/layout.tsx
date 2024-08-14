@@ -30,7 +30,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <div className="my-14 mx-8 lg:mx-72">{children}</div>
+          {/* <div className="my-14 mx-8 lg:mx-72">{children}</div> */}
+          <div className="my-16 px-8 max-w-[1300px] mx-auto">{children}</div>
           <Footer />
         </ThemeProvider>
       </body>
