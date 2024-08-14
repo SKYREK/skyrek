@@ -11,7 +11,7 @@ import Sidebar from "./sidebar";
     return (
       <Sheet>
         <SheetTrigger className="lg:hidden pr-4 hover:opacity-75 transition">
-          <Menu className="text-white"/>
+          <Menu/>
         </SheetTrigger>
         <SheetContent side="left" className="p-5">
           <Sidebar />
