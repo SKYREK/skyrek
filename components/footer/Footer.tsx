@@ -37,9 +37,11 @@ export function Footer() {
       {/* <div className="absolute right-10 bg-white dark:bg-[#020817] pr-2 pb-2 rounded-bl-xl p-2">
         <p className="text-sm text-black dark:text-white">Sh*t I{"’"}ve gone too far, send me back up👆</p>
       </div> */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-14 pt-14 lg:pt-10 px-20 lg:px-32">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-14 pt-14 lg:pt-10 px-10 lg:px-32">
         <div className="flex flex-col gap-5 col-span-2 md:col-span-1">
-          <p className="text-4xl">Do you Like what you see?</p>
+          <p className="text-4xl">
+            Do you Like <br className="hidden lg:block" /> what you see?
+          </p>
           <div className="flex gap-2 items-center">
             <Button>Start a Project</Button>
             <div className="bg-[#D0FF71] rounded-full">
@@ -81,7 +83,7 @@ export function Footer() {
             <Badge variant="secondary">New</Badge>
           </div>
           <Link href="#">Services</Link>
-          <Link href="#">Careers</Link>
+          <Link href="/careers">Careers</Link>
           <Link href="#">Contact</Link>
           <Link href="#">Gallery</Link>
         </div>
@@ -110,7 +112,7 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center text-slate-800 text-[42px] md:text-6xl lg:text-[170px] px-20 my-10 tracking-wide">
+      <div className="flex justify-center items-center text-slate-800 text-4xl md:text-6xl lg:text-[170px] px-20 my-10 tracking-wide">
         Crafting Since 2019
       </div>
       <div className="lg:flex lg:flex-row lg:justify-between items-center px-16 pb-10">
@@ -122,7 +124,7 @@ export function Footer() {
           >
             © Skyrek Ltd 2024.
           </Link>
-          <Tally1 className="hidden lg:block"/>
+          <Tally1 className="hidden lg:block" />
           <Link href="#" className="text-sm text-gray-400">
             Company Reg Number 10529058
           </Link>
@@ -131,11 +133,11 @@ export function Footer() {
           <Link href="#" className="text-sm text-gray-400 mr-3">
             Web Design Manchester
           </Link>
-          <Tally1 className="hidden lg:block"/>
+          <Tally1 className="hidden lg:block" />
           <Link href="#" className="text-sm text-gray-400 mr-3">
             All Rights Reserved
           </Link>
-          <Tally1 className="hidden lg:block"/>
+          <Tally1 className="hidden lg:block" />
           <Link href="#" className="text-sm text-gray-400">
             Privacy Policy (you really care?)
           </Link>

@@ -13,7 +13,7 @@ export function Header() {
 
   return (
     <>
-      <header className="flex items-center justify-between p-4 px-8">
+      <header className="flex items-center justify-between py-4 px-3 md:px-8">
         <div className="flex items-center">
           <MobileNavbar />
           <Link href="/">
@@ -21,7 +21,7 @@ export function Header() {
           </Link>
         </div>
         <HeaderRoutes className="lg:flex items-center gap-14 hidden" />
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-3 md:gap-4 items-center">
           <ModeToggle />
           <Button>Contact Us</Button>
         </div>

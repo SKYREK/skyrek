@@ -103,6 +103,7 @@ export default function Contact() {
       .catch((err) => {
         toast.error("Something went wrong!");
       });
+      form.reset();
   }
 
   return (
