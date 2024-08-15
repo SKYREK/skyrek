@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/header/header";
@@ -31,7 +30,8 @@ export default function RootLayout({
         >
           <Header />
           {/* <div className="my-14 mx-8 lg:mx-72">{children}</div> */}
-          <div className="my-16 px-8 max-w-[1300px] mx-auto">{children}</div>
+          {/* <div className="my-16 px-8 max-w-[1300px] mx-auto">{children}</div> */}
+          <div>{children}</div>
           <Footer />
         </ThemeProvider>
       </body>
