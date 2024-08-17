@@ -1,10 +1,12 @@
 import { cn } from "@/lib/utils";
 import GridPattern from "@/components/magicui/grid-pattern";
 import SparklesText from "@/components/magicui/sparkles-text";
-import { JobLogo } from "./JobLogo";
+import { JobLogo } from "./jobLogo";
 import { BriefcaseBusiness } from "lucide-react";
 import { MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import MobileDialog from "./mobileDialog";
+import DesktopDialog from "./desktopDialog";
 
 export default function Careers() {
   return (
@@ -41,11 +43,13 @@ export default function Careers() {
       <div className="my-12 lg:my-16 mx-8 max-w-[60rem] flex flex-col lg:mx-auto">
         {/* Development */}
         <div className="mb-8">
-          <p className="text-2xl font-semibold mb-3 text-slate-700 dark:text-slate-300">Development</p>
+          <p className="text-2xl font-semibold mb-3 text-slate-700 dark:text-slate-300">
+            Development
+          </p>
           <div className="flex flex-col gap-4">
             <div className="border border-gray-300 p-4 rounded-lg">
               <div className="md:flex gap-4 justify-between">
-                <div className="flex items-center gap-4 justify-between">
+                <div className="flex items-center gap-2 lg:gap-4 justify-between">
                   <JobLogo />
                   <div className="flex flex-col gap-2">
                     <p>
@@ -65,7 +69,12 @@ export default function Careers() {
                   </div>
                 </div>
                 <div className="mt-4 md:mt-0">
-                  <Button variant={"outline"} className="w-full">Apply</Button>
+                  <div className="lg:hidden">
+                    <MobileDialog/>
+                  </div>
+                  <div className="hidden lg:block">
+                    <DesktopDialog/>
+                  </div>
                 </div>
               </div>
             </div>
@@ -74,7 +83,9 @@ export default function Careers() {
 
         {/* Operations */}
         <div className="mb-8">
-          <p className="text-2xl font-semibold mb-3 text-slate-700 dark:text-slate-300">Operations</p>
+          <p className="text-2xl font-semibold mb-3 text-slate-700 dark:text-slate-300">
+            Operations
+          </p>
           <div className="flex flex-col gap-4">
             <div className="border border-gray-300 p-4 rounded-lg">
               <div className="md:flex gap-4 justify-between">
@@ -98,7 +109,9 @@ export default function Careers() {
                   </div>
                 </div>
                 <div className="mt-4 md:mt-0">
-                  <Button variant={"outline"} className="w-full">Apply</Button>
+                  <Button variant={"outline"} className="w-full">
+                    Apply
+                  </Button>
                 </div>
               </div>
             </div>
@@ -107,7 +120,9 @@ export default function Careers() {
 
         {/* IT */}
         <div className="mb-8">
-          <p className="text-2xl font-semibold mb-3 text-slate-700 dark:text-slate-300">IT</p>
+          <p className="text-2xl font-semibold mb-3 text-slate-700 dark:text-slate-300">
+            IT
+          </p>
           <div className="flex flex-col gap-4">
             <div className="border border-gray-300 p-4 rounded-lg">
               <div className="md:flex gap-4 justify-between">
@@ -131,7 +146,9 @@ export default function Careers() {
                   </div>
                 </div>
                 <div className="mt-4 md:mt-0">
-                  <Button variant={"outline"} className="w-full">Apply</Button>
+                  <Button variant={"outline"} className="w-full">
+                    Apply
+                  </Button>
                 </div>
               </div>
             </div>
@@ -140,7 +157,9 @@ export default function Careers() {
 
         {/* Software and Innovations */}
         <div className="mb-8">
-          <p className="text-2xl font-semibold mb-3 text-slate-700 dark:text-slate-300">Software and Innovations</p>
+          <p className="text-2xl font-semibold mb-3 text-slate-700 dark:text-slate-300">
+            Software and Innovations
+          </p>
           <div className="flex flex-col gap-4">
             <div className="border border-gray-300 p-4 rounded-lg">
               <div className="md:flex gap-4 justify-between">
@@ -164,7 +183,9 @@ export default function Careers() {
                   </div>
                 </div>
                 <div className="mt-4 md:mt-0">
-                  <Button variant={"outline"} className="w-full">Apply</Button>
+                  <Button variant={"outline"} className="w-full">
+                    Apply
+                  </Button>
                 </div>
               </div>
             </div>
@@ -173,7 +194,9 @@ export default function Careers() {
 
         {/* Business Development */}
         <div className="mb-8">
-          <p className="text-2xl font-semibold mb-3 text-slate-700 dark:text-slate-300">Business Development</p>
+          <p className="text-2xl font-semibold mb-3 text-slate-700 dark:text-slate-300">
+            Business Development
+          </p>
           <div className="flex flex-col gap-4">
             <div className="border border-gray-300 p-4 rounded-lg">
               <div className="md:flex gap-4 justify-between">
@@ -197,7 +220,9 @@ export default function Careers() {
                   </div>
                 </div>
                 <div className="mt-4 md:mt-0">
-                  <Button variant={"outline"} className="w-full">Apply</Button>
+                  <Button variant={"outline"} className="w-full">
+                    Apply
+                  </Button>
                 </div>
               </div>
             </div>
