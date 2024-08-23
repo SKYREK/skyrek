@@ -18,6 +18,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { ConfettiFireworks } from "./fireworks";
 import { AttachmentForm } from "./attachment-form";
+import { FileUpload } from "@/components/file-upload";
 
 const formSchema = z.object({
   firstName: z.string().min(2, {
@@ -111,7 +112,23 @@ export default function ApplyForm() {
               </FormItem>
             )}
           />
-          <AttachmentForm initialData={null} courseId={null}/>
+          <div className="lg:col-span-2">
+            <AttachmentForm />
+            {/* <div>
+              <FileUpload
+                endpoint="courseAttachment"
+                // onChange={(url) => {
+                //   if (url) {
+                //     onSubmit({ url: url });
+                //   }
+                // }}
+              />
+              <div className="text-xs text-muted-foreground mt-4 text-red-500">
+                Upload a files less than 10MB
+              </div>
+            </div> */}
+          </div>
+
           <div className="lg:col-span-2">
             {/* <ConfettiFireworks/> - Submit Button */}
             <ConfettiFireworks />

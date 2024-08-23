@@ -26,6 +26,7 @@ export default function MobileDialog() {
         <DrawerHeader className="mx-auto my-2">
           <DrawerTitle>Apply for this job</DrawerTitle>
         </DrawerHeader>
+        {/* form */}
         <ApplyForm />
         <DrawerFooter className="px-5 mb-4">
           <DrawerClose>

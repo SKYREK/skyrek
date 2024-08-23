@@ -22,6 +22,7 @@ export default function DesktopDialog() {
         <DialogHeader>
           <DialogTitle>Apply for this job</DialogTitle>
         </DialogHeader>
+        {/* form */}
         <ApplyForm />
       </DialogContent>
     </Dialog>

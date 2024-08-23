@@ -12,19 +12,11 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/file-upload";
 
-interface AttachmentFormProps {
-  initialData: Course & { attachments: Attachment[] };
-  courseId: string;
-};
-
 const formSchema = z.object({
   url: z.string().min(1),
 });
 
-export const AttachmentForm = ({
-  initialData,
-  courseId
-}: AttachmentFormProps) => {
+export const AttachmentForm = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
@@ -34,7 +26,7 @@ export const AttachmentForm = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.post(`/api/courses/${courseId}/attachments`, values);
+      // await axios.post(`/api/courses/${courseId}/attachments`, values);
       toast.success("Course updated");
       toggleEdit();
       router.refresh();
@@ -46,7 +38,7 @@ export const AttachmentForm = ({
   const onDelete = async (id: string) => {
     try {
       setDeletingId(id);
-      await axios.delete(`/api/courses/${courseId}/attachments/${id}`);
+      // await axios.delete(`/api/courses/${courseId}/attachments/${id}`);
       toast.success("Attachment deleted");
       router.refresh();
     } catch {
@@ -57,9 +49,9 @@ export const AttachmentForm = ({
   }
 
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4">
+    <div className="border bg-slate-100 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-        Course attachments
+        Attachments (CV, Cover Letter, etc.)
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing && (
             <>Cancel</>
@@ -72,7 +64,7 @@ export const AttachmentForm = ({
           )}
         </Button>
       </div>
-      {!isEditing && (
+      {/* {!isEditing && (
         <>
           {initialData.attachments.length === 0 && (
             <p className="text-sm mt-2 text-slate-500 italic">
@@ -108,19 +100,19 @@ export const AttachmentForm = ({
             </div>
           )}
         </>
-      )}
+      )} */}
       {isEditing && (
         <div>
           <FileUpload
             endpoint="courseAttachment"
-            onChange={(url) => {
-              if (url) {
-                onSubmit({ url: url });
-              }
-            }}
+            // onChange={(url) => {
+            //   if (url) {
+            //     onSubmit({ url: url });
+            //   }
+            // }}
           />
-          <div className="text-xs text-muted-foreground mt-4">
-            Add anything your students might need to complete the course.
+          <div className="text-xs text-muted-foreground mt-4 text-red-500">
+            Upload a files less than 10MB
           </div>
         </div>
       )}
