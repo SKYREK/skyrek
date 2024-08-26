@@ -1,7 +1,6 @@
 import { fullBlog } from "@/lib/interface";
 import { client, urlFor } from "@/lib/sanity";
 import { PortableText } from "@portabletext/react";
-import { Metadata } from "next";
 import Image from "next/image";
 
 export const revalidate = 30;
