@@ -7,7 +7,7 @@ const nextConfig = {
                 hostname: 'cdn.sanity.io'
             }
         ]
-    }
+    },
 };
 
 export default nextConfig;
