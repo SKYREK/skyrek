@@ -16,7 +16,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative mx-auto mt-16 max-w-7xl px-6 text-center md:px-8"
+      className="relative mx-auto mt-20 max-w-7xl px-6 text-center md:px-8"
     >
       <div className="backdrop-filter-[12px] animate-fade-in group inline-flex h-7 -translate-y-4 items-center justify-between gap-1 rounded-full border border-white/5 bg-white/10 px-3 text-xs text-white opacity-0 transition-all ease-in hover:cursor-pointer hover:bg-white/20 dark:text-black">
         <AnimatedGradientText>
@@ -46,7 +46,7 @@ export default function HeroSection() {
       </Button>
       <div
         ref={ref}
-        className="animate-fade-up relative mt-32 opacity-0 [--animation-delay:400ms] [perspective:2000px] after:absolute after:inset-0 after:z-50 after:[background:linear-gradient(to_top,hsl(var(--background))_30%,transparent)]"
+        className="animate-fade-up relative mt-16 md:mt-32 opacity-0 [--animation-delay:400ms] [perspective:2000px] after:absolute after:inset-0 after:z-50 after:[background:linear-gradient(to_top,hsl(var(--background))_30%,transparent)]"
       >
         <div
           className={`rounded-xl border border-white/10 bg-white bg-opacity-[0.01] before:absolute before:bottom-1/2 before:left-0 before:top-0 before:size-full before:opacity-0 before:[background-image:linear-gradient(to_bottom,var(--color-one),var(--color-one),transparent_40%)] before:[filter:blur(180px)] ${
