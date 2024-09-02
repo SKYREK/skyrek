@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export default function HeroSection() {
   const ref = useRef(null);
@@ -61,15 +62,19 @@ export default function HeroSection() {
             colorTo="var(--color-two)"
           />
 
-          <img
+          <Image
             src="/hero-dark.png"
             alt="Hero Image"
             className="relative hidden size-full rounded-[inherit] border object-contain dark:block"
+            width={1000}
+            height={1000}
           />
-          <img
+          <Image
             src="/hero-light.png"
             alt="Hero Image"
-            className="relative block size-full rounded-[inherit]  border object-contain dark:hidden"
+            className="relative block size-full rounded-[inherit] border object-contain dark:hidden"
+            width={1000}
+            height={1000}
           />
         </div>
       </div>

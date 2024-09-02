@@ -99,6 +99,8 @@ interface ConfettiButtonProps extends ButtonProps {
   children?: React.ReactNode;
 }
 
+Confetti.displayName = "Confetti";
+
 function ConfettiButton({ options, children, ...props }: ConfettiButtonProps) {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -121,5 +123,4 @@ function ConfettiButton({ options, children, ...props }: ConfettiButtonProps) {
 }
 
 export { Confetti, ConfettiButton };
-
 export default Confetti;

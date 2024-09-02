@@ -17,26 +17,6 @@ import { Tally1 } from "lucide-react";
 export function Footer() {
   return (
     <div className="bg-black rounded-t-xl text-white">
-      {/* <div className="flex flex-col gap-2 absolute left-10 bg-white dark:bg-[#020817] pr-2 pb-2 rounded-br-xl">
-        <div className="bg-[#D0FF71] rounded-full w-fit">
-          <Facebook size={30} className="text-black p-1" />
-        </div>
-        <div className="bg-[#D0FF71] rounded-full w-fit">
-          <Linkedin size={30} className="text-black p-1" />
-        </div>
-        <div className="bg-[#D0FF71] rounded-full w-fit">
-          <Twitter size={30} className="text-black p-1" />
-        </div>
-        <div className="bg-[#D0FF71] rounded-full w-fit">
-          <Instagram size={30} className="text-black p-1" />
-        </div>
-        <div className="bg-[#D0FF71] rounded-full w-fit">
-          <Github size={30} className="text-black p-1" />
-        </div>
-      </div> */}
-      {/* <div className="absolute right-10 bg-white dark:bg-[#020817] pr-2 pb-2 rounded-bl-xl p-2">
-        <p className="text-sm text-black dark:text-white">Sh*t I{"’"}ve gone too far, send me back up👆</p>
-      </div> */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-14 pt-14 lg:pt-10 px-10 lg:px-32">
         <div className="flex flex-col gap-5 col-span-2 md:col-span-1">
           <p className="text-4xl">
@@ -84,8 +64,8 @@ export function Footer() {
           </div>
           <Link href="#">Services</Link>
           <Link href="/careers">Careers</Link>
-          <Link href="#">Contact</Link>
-          <Link href="#">Gallery</Link>
+          <Link href="/contact">Contact</Link>
+          <Link href="/gallery">Gallery</Link>
         </div>
         <div className="flex flex-col gap-2">
           <p className="text-sm text-gray-400">Get in touch</p>
@@ -108,7 +88,7 @@ export function Footer() {
           </div>
           <div className="flex gap-2 items-center">
             <Navigation size={18} />
-            <p>///topped.little.pirate</p>
+            <p>topped.little.pirate</p>
           </div>
         </div>
       </div>
@@ -122,7 +102,7 @@ export function Footer() {
             href="#"
             className="text-sm text-gray-400 inline-block lg:inline mt-2 lg:my-0 mr-3"
           >
-            © Skyrek Ltd 2024.
+            Skyrek Ltd 2024.
           </Link>
           <Tally1 className="hidden lg:block" />
           <Link href="#" className="text-sm text-gray-400">
@@ -139,7 +119,7 @@ export function Footer() {
           </Link>
           <Tally1 className="hidden lg:block" />
           <Link href="#" className="text-sm text-gray-400">
-            Privacy Policy (you really care?)
+            Privacy Policy
           </Link>
         </div>
       </div>
