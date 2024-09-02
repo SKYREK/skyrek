@@ -71,7 +71,7 @@ export default function AboutSection() {
               </div>
             </div>
 
-            <p className="text-md text-gray-900 font-light mt-6 text-justify dark:text-slate-300">
+            <p className="text-sm text-gray-900 font-light mt-6 text-justify dark:text-slate-300">
               Let us take your business to new horizons. Our dedication to
               excellence and commitment to your success drive us to craft
               exceptional solutions for your every challenge. Embrace the power

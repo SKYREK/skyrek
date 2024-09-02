@@ -116,7 +116,7 @@ export default function Contact() {
             Contact
           </span>
           <span className="text-7xl md:text-8xl lg:text-9xl">
-            <p>It's nice to</p>
+            <p>It&apos;s nice to</p>
             <p className="flex items-center gap-10">
               <span>meet ya</span>
               <span className="bg-[#D0FF71] rounded-full p-10">

@@ -1,5 +1,6 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import { client, urlFor } from "@/lib/sanity";
+import Image from "next/image";
 
 export const revalidate = 30;
 
@@ -32,7 +33,7 @@ export default async function Gallery() {
       <div className="columns-2 gap-4 sm:columns-3">
         {images.map(({ imageUrl, width, height }: any, idx: any) => (
           <BlurFade key={imageUrl} delay={0.25 + idx * 0.05} inView>
-            <img
+            <Image
               className="mb-4 size-full rounded-lg object-contain"
               src={imageUrl}
               alt={`Random stock image ${idx + 1}`}

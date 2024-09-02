@@ -7,6 +7,10 @@
 .yarn/install-state.gz
 package-lock.json
 
+sanity
+package-lock.json
+package-lock-old.json
+
 # testing
 /coverage
 
@@ -32,7 +36,10 @@ yarn-error.log*
 
 # vercel
 .vercel
+.vercelignore
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+package-lock.json
+package-lock.json

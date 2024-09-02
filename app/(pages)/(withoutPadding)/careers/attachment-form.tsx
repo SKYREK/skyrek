@@ -105,11 +105,11 @@ export const AttachmentForm = () => {
         <div>
           <FileUpload
             endpoint="courseAttachment"
-            // onChange={(url) => {
-            //   if (url) {
-            //     onSubmit({ url: url });
-            //   }
-            // }}
+            onChange={(url) => {
+              if (url) {
+                onSubmit({ url: url });
+              }
+            }}
           />
           <div className="text-xs text-muted-foreground mt-4 text-red-500">
             Upload a files less than 10MB
