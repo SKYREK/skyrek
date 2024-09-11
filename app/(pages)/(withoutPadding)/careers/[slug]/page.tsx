@@ -6,6 +6,8 @@ import { Landmark } from "lucide-react";
 import { client } from "@/lib/sanity";
 import { User } from "lucide-react";
 import { PortableText } from "@portabletext/react";
+import MobileDialog from "../mobileDialog";
+import DesktopDialog from "../desktopDialog";
 
 async function getData(slug: string) {
   const query = `
@@ -65,12 +67,18 @@ export default async function CareerPage({
           </div>
         </div>
         <div className="mt-5 md:mt-0">
-          <Button variant={"outline"}>Apply for this job</Button>
+          {/* <Button variant={"outline"}>Apply for this job</Button> */}
+          <div className="lg:hidden">
+            <MobileDialog />
+          </div>
+          <div className="hidden lg:block">
+            <DesktopDialog />
+          </div>
         </div>
       </div>
 
       <div className="mt-8">
-        <p className="text-gray-900 font-semibold tracking-wide">
+        <p className="text-gray-900 font-semibold tracking-wide dark:text-white">
           Role Description:
         </p>
         <div className="prose prose-blue dark:prose-invert prose-li:marker:text-primary prose-a:text-light max-w-7xl w-full">
@@ -79,7 +87,7 @@ export default async function CareerPage({
       </div>
 
       <div className="mt-5">
-        <p className="text-gray-900 font-semibold tracking-wide">
+        <p className="text-gray-900 font-semibold tracking-wide dark:text-white">
           Responsibilities:
         </p>
         <div className="prose prose-blue dark:prose-invert prose-li:marker:text-primary prose-a:text-light max-w-7xl w-full">
@@ -88,7 +96,7 @@ export default async function CareerPage({
       </div>
 
       <div className="mt-5">
-        <p className="text-gray-900 font-semibold tracking-wide">
+        <p className="text-gray-900 font-semibold tracking-wide dark:text-white">
           Requirements:
         </p>
         <div className="prose prose-blue dark:prose-invert prose-li:marker:text-primary prose-a:text-light max-w-7xl w-full">

@@ -13,8 +13,17 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import ApplyForm from "./applyForm";
+import { useState } from "react";
 
 export default function MobileDialog() {
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Define the onClose function to close the dialog
+  const onClose = () => {
+    setIsOpen(false);
+  };
+  
   return (
     <Drawer>
       <DrawerTrigger className="w-full">
@@ -27,7 +36,7 @@ export default function MobileDialog() {
           <DrawerTitle>Apply for this job</DrawerTitle>
         </DrawerHeader>
         {/* form */}
-        <ApplyForm />
+        <ApplyForm onClose={onClose}/>
         <DrawerFooter className="px-5 mb-4">
           <DrawerClose>
             <Button variant="outline" className="max-w-5xl mx-auto w-full -mt-0.5">Cancel</Button>

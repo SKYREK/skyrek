@@ -1,40 +1,32 @@
-"use client";
+import { useState } from "react";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
-import toast from "react-hot-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { ConfettiFireworks } from "./fireworks";
+import confetti from "canvas-confetti";
 import { AttachmentForm } from "./attachment-form";
-import { FileUpload } from "@/components/file-upload";
 
+// Define form schema for validation
 const formSchema = z.object({
-  firstName: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  lastName: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z
-    .string()
-    .min(1, { message: "Please enter your email address." })
-    .email({ message: "Please enter a valid email address." }),
+  firstName: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  lastName: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().min(1, { message: "Please enter your email address." }).email({ message: "Please enter a valid email address." }),
   phone: z.string().min(10, { message: "Please enter your phone number." }),
 });
 
-export default function ApplyForm() {
+export default function ApplyForm({ onClose }: { onClose: () => void }) {
+  // State for tracking attachments and attachment links
+  const [hasAttachment, setHasAttachment] = useState(false);
+  const [attachmentLinks, setAttachmentLinks] = useState<string[]>([]);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -45,13 +37,56 @@ export default function ApplyForm() {
     },
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+  // Form submission handler
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (!hasAttachment) {
+      alert("Please upload an attachment before submitting.");
+      return;
+    }
 
+    // Send form data to API
+    try {
+      const response = await fetch("/api/career", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...values,
+          attachments: attachmentLinks, // Pass the actual attachment links
+        }),
+      });
+
+      if (response.ok) {
+        console.log("Email sent successfully");
+      } else {
+        console.log("Failed to send email");
+      }
+    } catch (error) {
+      console.log("Error:", error);
+    }
+
+    // Trigger confetti effect after successful form submission
+    fireConfetti();
+
+    console.log("Form submitted:", values);
     form.reset();
+    setHasAttachment(false); // Reset attachment state after submission
+    setAttachmentLinks([]);  // Reset the attachment links
+
+    // Close the dialog box
+    onClose();
   }
+
+  // Function to trigger confetti
+  const fireConfetti = () => {
+    confetti({
+      particleCount: 200,
+      spread: 600,
+      origin: { y: 0.6 },
+      zIndex: 9999, // Ensure confetti appears on top of everything
+    });
+  };
 
   return (
     <div className="">
@@ -66,7 +101,7 @@ export default function ApplyForm() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input placeholder="Name" {...field} />
+                  <Input placeholder="First Name" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -102,36 +137,26 @@ export default function ApplyForm() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input
-                    placeholder="Phone (optional)"
-                    {...field}
-                    type="number"
-                  />
+                  <Input placeholder="Mobile Number" {...field} type="number" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
+
+          {/* Attachment form */}
           <div className="lg:col-span-2">
-            <AttachmentForm />
-            {/* <div>
-              <FileUpload
-                endpoint="courseAttachment"
-                // onChange={(url) => {
-                //   if (url) {
-                //     onSubmit({ url: url });
-                //   }
-                // }}
-              />
-              <div className="text-xs text-muted-foreground mt-4 text-red-500">
-                Upload a files less than 10MB
-              </div>
-            </div> */}
+            <AttachmentForm
+              setHasAttachment={setHasAttachment}
+              setAttachmentLinks={setAttachmentLinks} // Pass setAttachmentLinks to store URLs
+            />
           </div>
 
-          <div className="lg:col-span-2">
-            {/* <ConfettiFireworks/> - Submit Button */}
-            <ConfettiFireworks />
+          {/* Submit button, disabled until an attachment is uploaded */}
+          <div className="lg:col-span-2 flex justify-center">
+            <Button type="submit" disabled={!hasAttachment} className="w-full">
+              Submit
+            </Button>
           </div>
         </form>
       </Form>

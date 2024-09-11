@@ -19,7 +19,7 @@ export default function HeroSection() {
       id="hero"
       className="relative mx-auto mt-20 max-w-7xl px-6 text-center md:px-8"
     >
-      <div className="backdrop-filter-[12px] animate-fade-in group inline-flex h-7 -translate-y-4 items-center justify-between gap-1 rounded-full border border-white/5 bg-white/10 px-3 text-xs text-white opacity-0 transition-all ease-in hover:cursor-pointer hover:bg-white/20 dark:text-black">
+      <div className="backdrop-filter-[12px] animate-fade-in group inline-flex h-7 -translate-y-4 items-center justify-between gap-1">
         <AnimatedGradientText>
           🎉 <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />{" "}
           <span
