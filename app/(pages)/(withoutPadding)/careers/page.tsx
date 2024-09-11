@@ -78,9 +78,9 @@ export default async function Careers() {
                 <div className="flex flex-col gap-4" key={idx}>
                   <div className="border border-gray-300 p-4 rounded-lg">
                     <div className="md:flex gap-4 justify-between">
-                      <div className="flex items-center gap-2 lg:gap-4 justify-between">
+                      <div className="flex items-center gap-2 lg:gap-4 md:justify-between">
                         <JobLogo />
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-2 ml-1 md:ml-0">
                           <Link href={`/careers/${post.currentSlug}`}>
                             <p>{post.jobTitle}</p>
                           </Link>
@@ -131,9 +131,9 @@ export default async function Careers() {
                 <div className="flex flex-col gap-4" key={idx}>
                   <div className="border border-gray-300 p-4 rounded-lg">
                     <div className="md:flex gap-4 justify-between">
-                      <div className="flex items-center gap-2 lg:gap-4 justify-between">
+                      <div className="flex items-center gap-2 lg:gap-4 md:justify-between">
                         <JobLogo />
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-2 ml-1 md:ml-0">
                           <Link href={`/careers/${post.currentSlug}`}>
                             <p>{post.jobTitle}</p>
                           </Link>
@@ -182,9 +182,9 @@ export default async function Careers() {
                 <div className="flex flex-col gap-4" key={idx}>
                   <div className="border border-gray-300 p-4 rounded-lg">
                     <div className="md:flex gap-4 justify-between">
-                      <div className="flex items-center gap-2 lg:gap-4 justify-between">
+                      <div className="flex items-center gap-2 lg:gap-4 md:justify-between">
                         <JobLogo />
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-2 ml-1 md:ml-0">
                           <Link href={`/careers/${post.currentSlug}`}>
                             <p>{post.jobTitle}</p>
                           </Link>
@@ -236,9 +236,9 @@ export default async function Careers() {
                 <div className="flex flex-col gap-4" key={idx}>
                   <div className="border border-gray-300 p-4 rounded-lg">
                     <div className="md:flex gap-4 justify-between">
-                      <div className="flex items-center gap-2 lg:gap-4 justify-between">
+                      <div className="flex items-center gap-2 lg:gap-4 md:justify-between">
                         <JobLogo />
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-2 ml-1 md:ml-0">
                           <Link href={`/careers/${post.currentSlug}`}>
                             <p>{post.jobTitle}</p>
                           </Link>
@@ -290,9 +290,9 @@ export default async function Careers() {
                 <div className="flex flex-col gap-4" key={idx}>
                   <div className="border border-gray-300 p-4 rounded-lg">
                     <div className="md:flex gap-4 justify-between">
-                      <div className="flex items-center gap-2 lg:gap-4 justify-between">
+                      <div className="flex items-center gap-2 lg:gap-4 md:justify-between">
                         <JobLogo />
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-2 ml-1 md:ml-0">
                           <Link href={`/careers/${post.currentSlug}`}>
                             <p>{post.jobTitle}</p>
                           </Link>

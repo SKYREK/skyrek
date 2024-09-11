@@ -1,62 +1,44 @@
-"use client";
-
-import * as z from "zod";
-import axios from "axios";
-import { Pencil, PlusCircle, ImageIcon, File, Loader2, X } from "lucide-react";
 import { useState } from "react";
+import { PlusCircle, File, Loader2, X } from "lucide-react";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
-// import { Attachment, Course } from "@prisma/client";
-import Image from "next/image";
-
 import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/file-upload";
 
-const formSchema = z.object({
-  url: z.string().min(1),
-});
-
-export const AttachmentForm = () => {
+export const AttachmentForm = ({ setHasAttachment, setAttachmentLinks }: any) => {
   const [isEditing, setIsEditing] = useState(false);
+  const [attachments, setAttachments] = useState<any[]>([]);
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
   const toggleEdit = () => setIsEditing((current) => !current);
 
-  const router = useRouter();
-
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = (url: string) => {
     try {
-      // await axios.post(`/api/courses/${courseId}/attachments`, values);
-      toast.success("Course updated");
+      const newAttachment = { id: new Date().toISOString(), name: url };
+      setAttachments((current) => [...current, newAttachment]);
+      setAttachmentLinks((current: any) => [...current, url]); // Pass the attachment URLs to parent
+      toast.success("File uploaded successfully");
+      setHasAttachment(true); // Set the parent form's attachment state
       toggleEdit();
-      router.refresh();
     } catch {
       toast.error("Something went wrong");
     }
   };
 
-  const onDelete = async (id: string) => {
-    try {
-      setDeletingId(id);
-      // await axios.delete(`/api/courses/${courseId}/attachments/${id}`);
-      toast.success("Attachment deleted");
-      router.refresh();
-    } catch {
-      toast.error("Something went wrong");
-    } finally {
-      setDeletingId(null);
+  const onDelete = (id: string) => {
+    const updatedAttachments = attachments.filter((att) => att.id !== id);
+    setAttachments(updatedAttachments);
+    
+    if (updatedAttachments.length === 0) {
+      setHasAttachment(false); // If no attachments are left, mark as no attachment
     }
-  }
+  };
 
   return (
-    <div className="border bg-slate-100 rounded-md p-4">
+    <div className="border bg-slate-100 rounded-md p-4 dark:bg-black dark:text-white">
       <div className="font-medium flex items-center justify-between">
-        Attachments (CV, Cover Letter, etc.)
+        Attachments
         <Button onClick={toggleEdit} variant="ghost">
-          {isEditing && (
-            <>Cancel</>
-          )}
-          {!isEditing && (
+          {isEditing ? "Cancel" : (
             <>
               <PlusCircle className="h-4 w-4 mr-2" />
               Add a file
@@ -64,16 +46,17 @@ export const AttachmentForm = () => {
           )}
         </Button>
       </div>
-      {/* {!isEditing && (
+
+      {!isEditing && (
         <>
-          {initialData.attachments.length === 0 && (
+          {attachments.length === 0 && (
             <p className="text-sm mt-2 text-slate-500 italic">
               No attachments yet
             </p>
           )}
-          {initialData.attachments.length > 0 && (
+          {attachments.length > 0 && (
             <div className="space-y-2">
-              {initialData.attachments.map((attachment) => (
+              {attachments.map((attachment) => (
                 <div
                   key={attachment.id}
                   className="flex items-center p-3 w-full bg-sky-100 border-sky-200 border text-sky-700 rounded-md"
@@ -82,15 +65,13 @@ export const AttachmentForm = () => {
                   <p className="text-xs line-clamp-1">
                     {attachment.name}
                   </p>
-                  {deletingId === attachment.id && (
-                    <div>
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                    </div>
-                  )}
-                  {deletingId !== attachment.id && (
+                  {deletingId === attachment.id ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
                     <button
                       onClick={() => onDelete(attachment.id)}
                       className="ml-auto hover:opacity-75 transition"
+                      aria-label={`Delete ${attachment.name}`}
                     >
                       <X className="h-4 w-4" />
                     </button>
@@ -100,22 +81,23 @@ export const AttachmentForm = () => {
             </div>
           )}
         </>
-      )} */}
+      )}
+
       {isEditing && (
         <div>
           <FileUpload
             endpoint="courseAttachment"
             onChange={(url) => {
               if (url) {
-                onSubmit({ url: url });
+                onSubmit(url); // Get the real file URL here
               }
             }}
           />
           <div className="text-xs text-muted-foreground mt-4 text-red-500">
-            Upload a files less than 10MB
+            Upload a file less than 10MB
           </div>
         </div>
       )}
     </div>
-  )
-}
+  );
+};
