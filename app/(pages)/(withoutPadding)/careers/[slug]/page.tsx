@@ -47,16 +47,16 @@ export default async function CareerPage({
           </p>
           <div className="flex gap-4">
             <div className="flex gap-2 items-center">
-              <BriefcaseBusiness className="h-4 w-4 text-gray-600" />
-              <p className="text-sm text-gray-600">{data.contractType}</p>
+              <BriefcaseBusiness className="h-4 w-4 text-gray-300" />
+              <p className="text-sm text-gray-300">{data.contractType}</p>
             </div>
             <div className="flex gap-2 items-center">
-              <User className="h-4 w-4 text-gray-600" />
-              <p className="text-sm text-gray-600">{data.workingMode}</p>
+              <User className="h-4 w-4 text-gray-300" />
+              <p className="text-sm text-gray-300">{data.workingMode}</p>
             </div>
             <div className="flex gap-2 items-center">
-              <MapPin className="h-4 w-4 text-gray-600" />
-              <p className="text-sm text-gray-600">{data.location}</p>
+              <MapPin className="h-4 w-4 text-gray-300" />
+              <p className="text-sm text-gray-300">{data.location}</p>
             </div>
             {data.salary && (
               <div className="flex gap-2 items-center">

@@ -1,49 +1,30 @@
-"use client";
-import axios from "axios";
-import { Button } from "@/components/ui/button";
-import { Dot, MoveUpRight } from "lucide-react";
-import { MoveDownRight } from "lucide-react";
-import { MapPin } from "lucide-react";
-import Image from "next/image";
-import { Facebook } from "lucide-react";
-import { Linkedin } from "lucide-react";
-import { Twitter } from "lucide-react";
-import { Instagram } from "lucide-react";
-import { Github } from "lucide-react";
+'use client'
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
+import axios from "axios"
+import { Button } from "@/components/ui/button"
+import { Dot, MoveUpRight, MoveDownRight } from "lucide-react"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-
+} from "@/components/ui/form"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { client } from "@/lib/sanity";
-import toast from "react-hot-toast";
+} from "@/components/ui/select"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { client } from "@/lib/sanity"
+import toast from "react-hot-toast"
+import Link from "next/link"
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -61,7 +42,7 @@ const formSchema = z.object({
     required_error: "Please select where you found us.",
   }),
   message: z.string().min(1, { message: "Please enter a message." }),
-});
+})
 
 export default function Contact() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -71,12 +52,9 @@ export default function Contact() {
       email: "",
       message: "",
     },
-  });
+  })
 
-  // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     client
       .create({
         _type: "contactForm",
@@ -94,38 +72,38 @@ export default function Contact() {
             },
           })
           .then(() => {
-            toast.success("Successfully Submitted");
+            toast.success("Successfully Submitted")
           })
           .catch(() => {
-            // toast.error("Form submitted, but email failed to send.");
-          });
+            // toast.error("Form submitted, but email failed to send.")
+          })
       })
       .catch((err) => {
-        toast.error("Something went wrong!");
-      });
-      form.reset();
+        toast.error("Something went wrong!")
+      })
+    form.reset()
   }
 
   return (
-    <div className="">
+    <div>
       {/* section 01 */}
-      <div className="flex justify-between">
-        <div className="lg:flex lg:items-start gap-20">
+      <div className="flex flex-col md:flex-row justify-between items-start lg:items-center mb-12">
+        <div className="flex flex-col lg:flex-row lg:items-start gap-4 lg:gap-20 mb-8 lg:mb-0">
           <span className="flex items-center lg:mt-7">
             <Dot />
             Contact
           </span>
-          <span className="text-7xl md:text-8xl lg:text-9xl">
+          <div className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
             <p>It&apos;s nice to</p>
-            <p className="flex items-center gap-10">
+            <p className="flex items-center gap-4 lg:gap-10">
               <span>meet ya</span>
-              <span className="bg-[#D0FF71] rounded-full p-10">
+              <span className="bg-[#D0FF71] rounded-full p-4 lg:p-10">
                 <MoveDownRight size={25} className="text-black" />
               </span>
             </p>
-          </span>
+          </div>
         </div>
-        <div>
+        <div className="hidden md:block">
           <video
             src="https://servd-made-byshape.b-cdn.net/production/uploads/videos/C-240304%20-%20Shape%20-%20P1.mp4"
             width={180}
@@ -139,102 +117,103 @@ export default function Contact() {
       <hr className="my-12 lg:my-20" />
 
       {/* section 02 */}
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
-        <div className="col-span-1 my-8 lg:my-0 order-2 lg:order-1 lg:col-span-3">
-          <p>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+        <div className="lg:col-span-4 order-2 lg:order-1">
+          <p className="mb-6">
             For general enquiries, please fill out the form to get in touch.
             Alternatively, if you know your project details — head over to our
             project planner for a more refined step-by-step process.
           </p>
-          <div className="flex gap-2 items-center my-5">
-            <Button>Start a Project</Button>
-            <div className="bg-[#D0FF71] rounded-full">
-              <MoveUpRight size={25} className="text-black p-1" />
+          <div className="flex gap-2 items-center mb-6">
+            <Link href="/contact">
+              <Button>Start a Project</Button>
+            </Link>
+            <div className="bg-[#D0FF71] rounded-full p-2">
+              <Link href="/contact"><MoveUpRight size={25} className="text-black" /></Link>
             </div>
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
             <p className="text-gray-900 dark:text-gray-400">
               Hate contact forms?
             </p>
-            <p>hello@skyrek.lk</p>
+            <p>info@skyrek.lk</p>
           </div>
         </div>
-        <div className="col-span-1 order-1 lg:order-2 lg:col-start-6 lg:col-end-13">
+        <div className="lg:col-span-8 order-1 lg:order-2">
           <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="grid grid-cols-1 md:grid-cols-2 gap-5"
-            >
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="Name" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="Email Address" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="phone"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input
-                        placeholder="Phone (optional)"
-                        {...field}
-                        type="number"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="source"
-                render={({ field }) => (
-                  <FormItem>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
                       <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="where do you here about us?" />
-                        </SelectTrigger>
+                        <Input placeholder="Name" {...field} />
                       </FormControl>
-                      <SelectContent>
-                        <SelectItem value="Google">Google</SelectItem>
-                        <SelectItem value="Linkedin">Linkedin</SelectItem>
-                        <SelectItem value="Facebook">Facebook</SelectItem>
-                        <SelectItem value="Friend">From a Friend</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input placeholder="Email Address" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input
+                          placeholder="Phone (optional)"
+                          {...field}
+                          type="tel"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="source"
+                  render={({ field }) => (
+                    <FormItem>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Where did you hear about us?" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="Google">Google</SelectItem>
+                          <SelectItem value="Linkedin">LinkedIn</SelectItem>
+                          <SelectItem value="Facebook">Facebook</SelectItem>
+                          <SelectItem value="Friend">From a Friend</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
               <FormField
                 control={form.control}
                 name="message"
                 render={({ field }) => (
-                  <FormItem className="col-span-2">
+                  <FormItem>
                     <Textarea
                       placeholder="Tell us a little bit about yourself"
                       className="resize-none"
@@ -244,7 +223,7 @@ export default function Contact() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="col-span-2">
+              <Button type="submit" className="w-full md:w-auto">
                 Submit
               </Button>
             </form>
@@ -252,5 +231,5 @@ export default function Contact() {
         </div>
       </div>
     </div>
-  );
+  )
 }

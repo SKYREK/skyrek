@@ -15,7 +15,7 @@ const routes = [
     // },
     {
         label: "FAQ",
-        href: "/faq",
+        href: "#",
     },
     {
         label: "Blog",

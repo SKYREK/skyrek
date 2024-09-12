@@ -5,7 +5,7 @@ import { Handshake } from "lucide-react";
 
 export default function AboutSection() {
   return (
-    <section>
+    <section className="mt-10 md:-mt-5">
       <div className="mx-auto flex max-w-screen-xl flex-col gap-8 px-4 md:px-8">
         <div className="mx-auto max-w-5xl text-center">
           <h4 className="text-xl font-semibold tracking-tight text-black dark:text-white">

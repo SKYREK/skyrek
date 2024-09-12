@@ -23,7 +23,9 @@ export function Header() {
         <HeaderRoutes className="lg:flex items-center gap-14 hidden" />
         <div className="flex gap-3 md:gap-4 items-center">
           <ModeToggle />
-          <Button>Contact Us</Button>
+          <Link href="/contact">
+            <Button>Contact Us</Button>
+          </Link>
         </div>
       </header>
       <hr />
