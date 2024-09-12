@@ -10,6 +10,7 @@ import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeroSection() {
   const ref = useRef(null);
@@ -17,7 +18,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative mx-auto mt-20 max-w-7xl px-6 text-center md:px-8"
+      className="relative mx-auto mt-16 md:mt-20 max-w-7xl px-6 text-center md:px-8"
     >
       <div className="backdrop-filter-[12px] animate-fade-in group inline-flex h-7 -translate-y-4 items-center justify-between gap-1">
         <AnimatedGradientText>
@@ -41,10 +42,12 @@ export default function HeroSection() {
         unparalleled value.
         <br className="hidden md:block" /> efficiency and unparalleled value.
       </p>
-      <Button className="animate-fade-in -translate-y-4 gap-1 rounded-lg text-white opacity-0 ease-in-out [--animation-delay:600ms] dark:text-black">
-        <span>Get Started for free </span>
-        <ArrowRightIcon className="ml-1 size-4 transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
-      </Button>
+      <Link href="/contact">
+        <Button className="animate-fade-in -translate-y-4 gap-1 rounded-lg text-white opacity-0 ease-in-out [--animation-delay:600ms] dark:text-black">
+          <span>Get Started for free </span>
+          <ArrowRightIcon className="ml-1 size-4 transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
+        </Button>
+      </Link>
       <div
         ref={ref}
         className="animate-fade-up relative mt-16 md:mt-32 opacity-0 [--animation-delay:400ms] [perspective:2000px] after:absolute after:inset-0 after:z-50 after:[background:linear-gradient(to_top,hsl(var(--background))_30%,transparent)]"

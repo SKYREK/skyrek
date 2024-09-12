@@ -12,13 +12,21 @@ import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import confetti from "canvas-confetti";
-import { AttachmentForm } from "./attachment-form";
+import AttachmentForm from "./attachment-form";
+import { Loader2 } from "lucide-react";
 
 // Define form schema for validation
 const formSchema = z.object({
-  firstName: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  lastName: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().min(1, { message: "Please enter your email address." }).email({ message: "Please enter a valid email address." }),
+  firstName: z
+    .string()
+    .min(2, { message: "Name must be at least 2 characters." }),
+  lastName: z
+    .string()
+    .min(2, { message: "Name must be at least 2 characters." }),
+  email: z
+    .string()
+    .min(1, { message: "Please enter your email address." })
+    .email({ message: "Please enter a valid email address." }),
   phone: z.string().min(10, { message: "Please enter your phone number." }),
 });
 
@@ -26,6 +34,7 @@ export default function ApplyForm({ onClose }: { onClose: () => void }) {
   // State for tracking attachments and attachment links
   const [hasAttachment, setHasAttachment] = useState(false);
   const [attachmentLinks, setAttachmentLinks] = useState<string[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -44,6 +53,8 @@ export default function ApplyForm({ onClose }: { onClose: () => void }) {
       return;
     }
 
+    setIsSubmitting(true);
+
     // Send form data to API
     try {
       const response = await fetch("/api/career", {
@@ -59,23 +70,21 @@ export default function ApplyForm({ onClose }: { onClose: () => void }) {
 
       if (response.ok) {
         console.log("Email sent successfully");
+        // Trigger confetti effect after successful form submission
+        fireConfetti();
+        form.reset();
+        setHasAttachment(false); // Reset attachment state after submission
+        setAttachmentLinks([]); // Reset the attachment links
+        // Close the dialog box
+        onClose();
       } else {
         console.log("Failed to send email");
       }
     } catch (error) {
       console.log("Error:", error);
+    } finally {
+      setIsSubmitting(false);
     }
-
-    // Trigger confetti effect after successful form submission
-    fireConfetti();
-
-    console.log("Form submitted:", values);
-    form.reset();
-    setHasAttachment(false); // Reset attachment state after submission
-    setAttachmentLinks([]);  // Reset the attachment links
-
-    // Close the dialog box
-    onClose();
   }
 
   // Function to trigger confetti
@@ -95,6 +104,34 @@ export default function ApplyForm({ onClose }: { onClose: () => void }) {
           onSubmit={form.handleSubmit(onSubmit)}
           className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl mx-auto px-5 lg:px-0"
         >
+          {/* mobile screen */}
+          <div className="flex flex-row gap-5 md:hidden">
+            <FormField
+              control={form.control}
+              name="firstName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input placeholder="First Name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="lastName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input placeholder="Last Name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
           <FormField
             control={form.control}
             name="firstName"
@@ -119,6 +156,7 @@ export default function ApplyForm({ onClose }: { onClose: () => void }) {
               </FormItem>
             )}
           />
+
           <FormField
             control={form.control}
             name="email"
@@ -154,8 +192,19 @@ export default function ApplyForm({ onClose }: { onClose: () => void }) {
 
           {/* Submit button, disabled until an attachment is uploaded */}
           <div className="lg:col-span-2 flex justify-center">
-            <Button type="submit" disabled={!hasAttachment} className="w-full">
-              Submit
+            <Button
+              type="submit"
+              disabled={!hasAttachment || isSubmitting}
+              className="w-full"
+            >
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Submitting...
+                </>
+              ) : (
+                "Submit"
+              )}
             </Button>
           </div>
         </form>

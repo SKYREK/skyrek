@@ -76,7 +76,7 @@ export default function FAQSection() {
           {faqs.map((faq, index) => (
             <Accordion type="single" collapsible key={index}>
               <AccordionItem value="item-1">
-                <AccordionTrigger className="text-[15px] md:text-base">{faq.title}</AccordionTrigger>
+                <AccordionTrigger className="text-[15px] md:text-base text-left">{faq.title}</AccordionTrigger>
                 <AccordionContent>{faq.description}</AccordionContent>
               </AccordionItem>
             </Accordion>

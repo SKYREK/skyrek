@@ -13,7 +13,7 @@ export default function Sidebar() {
         </div>
         <HeaderRoutes className="flex flex-col items-center gap-14 mt-10" />
       </div>
-      <Button>Contact Us</Button>
+      <Link href="/contact"><Button>Contact Us</Button></Link>
     </div>
   );
 }

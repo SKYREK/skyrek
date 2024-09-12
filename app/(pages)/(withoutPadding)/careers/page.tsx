@@ -93,7 +93,7 @@ export default async function Careers() {
                               <User className="h-4 w-4" />
                               <p>{post.workingMode}</p>
                             </div>
-                            <div className="flex items-center gap-1">
+                            <div className="hidden md:flex items-center gap-1">
                               <MapPin className="h-4 w-4" />
                               <p>{post.location}</p>
                             </div>
@@ -146,7 +146,7 @@ export default async function Careers() {
                               <User className="h-4 w-4" />
                               <p>{post.workingMode}</p>
                             </div>
-                            <div className="flex items-center gap-1">
+                            <div className="hidden md:flex items-center gap-1">
                               <MapPin className="h-4 w-4" />
                               <p>{post.location}</p>
                             </div>
@@ -197,7 +197,7 @@ export default async function Careers() {
                               <User className="h-4 w-4" />
                               <p>{post.workingMode}</p>
                             </div>
-                            <div className="flex items-center gap-1">
+                            <div className="hidden md:flex items-center gap-1">
                               <MapPin className="h-4 w-4" />
                               <p>{post.location}</p>
                             </div>
@@ -251,7 +251,7 @@ export default async function Careers() {
                               <User className="h-4 w-4" />
                               <p>{post.workingMode}</p>
                             </div>
-                            <div className="flex items-center gap-1">
+                            <div className="hidden md:flex items-center gap-1">
                               <MapPin className="h-4 w-4" />
                               <p>{post.location}</p>
                             </div>
@@ -305,7 +305,7 @@ export default async function Careers() {
                               <User className="h-4 w-4" />
                               <p>{post.workingMode}</p>
                             </div>
-                            <div className="flex items-center gap-1">
+                            <div className="hidden md:flex items-center gap-1">
                               <MapPin className="h-4 w-4" />
                               <p>{post.location}</p>
                             </div>

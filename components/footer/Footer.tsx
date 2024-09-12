@@ -23,26 +23,36 @@ export function Footer() {
             Do you Like <br className="hidden lg:block" /> what you see?
           </p>
           <div className="flex gap-2 items-center">
-            <Button>Start a Project</Button>
+            <Link href="/contact"><Button>Start a Project</Button></Link>
             <div className="bg-[#D0FF71] rounded-full">
-              <MoveUpRight size={25} className="text-black p-1" />
+              <Link href="/contact"><MoveUpRight size={25} className="text-black p-1" /></Link>
             </div>
           </div>
           <div className="flex gap-2 pr-2 pb-2 rounded-br-xl">
             <div className="bg-slate-300 rounded-full w-fit">
-              <Facebook size={30} className="text-black p-1.5" />
+              <Link href="https://facebook.com/skyrek7">
+                <Facebook size={30} className="text-black p-1.5" />
+              </Link>
             </div>
             <div className="bg-slate-300 rounded-full w-fit">
-              <Linkedin size={30} className="text-black p-1.5" />
+              <Link href="https://linkedin.com/company/skyrek-digital-solutions">
+                <Linkedin size={30} className="text-black p-1.5" />
+              </Link>
             </div>
             <div className="bg-slate-300 rounded-full w-fit">
-              <Twitter size={30} className="text-black p-1.5" />
+              <Link href="https://x.com/">
+                <Twitter size={30} className="text-black p-1.5" />
+              </Link>
             </div>
             <div className="bg-slate-300 rounded-full w-fit">
-              <Instagram size={30} className="text-black p-1.5" />
+              <Link href="https://instagram.com/">
+                <Instagram size={30} className="text-black p-1.5" />
+              </Link>
             </div>
             <div className="bg-slate-300 rounded-full w-fit">
-              <Github size={30} className="text-black p-1.5" />
+              <Link href="https://github.com/skyrek">
+                <Github size={30} className="text-black p-1.5" />
+              </Link>
             </div>
           </div>
         </div>
@@ -53,7 +63,7 @@ export function Footer() {
           <Link href="#">Testimonials</Link>
           <Link href="#">Processes</Link>
           <Link href="#">FAQs</Link>
-          <Link href="#">Blog</Link>
+          <Link href="/blog">Blog</Link>
         </div>
         <div className="flex flex-col gap-2">
           <p className="text-sm text-gray-400">Explore</p>
@@ -71,31 +81,29 @@ export function Footer() {
           <p className="text-sm text-gray-400">Get in touch</p>
           <div className="flex gap-2 items-center">
             <Phone size={18} />
-            <p>+44 123 456 789</p>
+            <p>+76 2989 639</p>
           </div>
           <div className="flex gap-2 items-center">
             <Mail size={18} />
-            <p>info@Skyrek.lk</p>
+            <p>info@skyrek.com</p>
           </div>
           <div className="flex gap-2 justify-start">
             <MapPin size={18} className="mt-1" />
             <div className="flex flex-col">
-              <p>Manchester, UK</p>
-              <p>1 Gibfield Park Avenue</p>
-              <p>Atherton Manchester</p>
-              <p>M46 0SU</p>
+              <p>Kaluthara</p>
+              <p>Sri Lanka</p>
             </div>
           </div>
           <div className="flex gap-2 items-center">
             <Navigation size={18} />
-            <p>topped.little.pirate</p>
+            <Link href="https://book.skyrek.com" target="_blank">book.skyrek.com</Link>
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center text-slate-800 text-4xl md:text-6xl lg:text-[170px] px-20 my-10 tracking-wide">
+      <div className="hidden md:flex justify-center items-center text-slate-800 text-4xl md:text-6xl lg:text-[170px] px-20 my-10 tracking-wide">
         Crafting Since 2019
       </div>
-      <div className="lg:flex lg:flex-row lg:justify-between items-center px-16 pb-10">
+      <div className="mt-16 lg:flex lg:flex-row lg:justify-between items-center px-16 pb-16">
         <div className="flex flex-col lg:flex-row items-center my-2 lg:my-0">
           <Logo />
           <Link
