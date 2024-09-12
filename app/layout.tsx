@@ -9,8 +9,8 @@ import { ToastProvider } from "@/components/providers/toaster-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "SkyRek - Build your next App with SkyRek",
-  description: "Build your next App with SkyRek",
+  title: "SKYREK - Build your next App with SKYREK",
+  description: "Build your next App with SKYREK",
 };
 
 export default function RootLayout({
