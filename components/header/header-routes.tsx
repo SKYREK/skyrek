@@ -35,7 +35,7 @@ export const HeaderRoutes = ({className}: {className?: string}) => {
     return (
         <div className={className}>
             {routes.map((route) => (
-                <a href={route.href} key={route.href}>
+                <a className=" min-w-[65px] text-center " href={route.href} key={route.href}>
                     {route.label}
                 </a>
             ))}

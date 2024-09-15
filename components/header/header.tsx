@@ -14,14 +14,16 @@ export function Header() {
   return (
     <>
       <header className="flex items-center justify-between py-4 px-3 md:px-8">
-        <div className="flex items-center">
+        <div className="flex items-center z-[50]">
           <MobileNavbar />
           <Link href="/">
             <Logo />
           </Link>
         </div>
-        <HeaderRoutes className="lg:flex items-center gap-14 hidden" />
-        <div className="flex gap-3 md:gap-4 items-center">
+        <div className="left-0 absolute w-full flex justify-center z-[40] ">
+          <HeaderRoutes className="lg:flex  items-center gap-10 hidden " />
+        </div>
+        <div className="flex gap-3 md:gap-4 items-center z-[50]">
           <ModeToggle />
           <Link href="/contact">
             <Button>Contact Us</Button>
